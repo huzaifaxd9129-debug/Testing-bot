@@ -1,9 +1,4 @@
-const {
-  Client,
-  GatewayIntentBits,
-  Collection
-} = require("discord.js");
-
+const { Client, GatewayIntentBits, Collection } = require("discord.js");
 const config = require("./config");
 
 const client = new Client({
@@ -23,8 +18,7 @@ require("./handlers/eventHandler")(client);
 
 // message system
 client.on("messageCreate", (message) => {
-  if (!message.guild) return;
-  if (message.author.bot) return;
+  if (!message.guild || message.author.bot) return;
 
   const prefix = config.prefix;
 
